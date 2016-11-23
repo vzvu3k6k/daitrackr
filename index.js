@@ -22,11 +22,23 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.get('/feed', (req, res) => {
-  let antennaID = util.extractAntennaID(req.query.antenna)
-  if (antennaID === null) {
-    return res.sendStatus(400)
+let feedMiddlewares = [
+  function handleAntennaID (req, res, next) {
+    req.antennaID = util.extractAntennaID(req.query.antenna)
+
+    // validate
+    if (req.antennaID === null) {
+      res.status(400).send('アンテナのURLまたはIDが未対応の形式です。')
+      return
+    }
+    next()
   }
+]
+
+app.get('/feed', feedMiddlewares, (req, res) => {
+  let antennaID = req.antennaID
+  return res.send(req.antennaID)
+
   scrape(credentials, antennaID).then((antenna) => {
     for (let log of antenna.changelog) {
       let key = [log.timestamp, log.user, log.action, log.url].join()
