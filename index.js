@@ -31,6 +31,14 @@ let feedMiddlewares = [
       res.status(400).send('アンテナのURLまたはIDが未対応の形式です。')
       return
     }
+
+    // canonicalize
+    let canonicalUrl = `/feed?antenna=${req.antennaID}`
+    if (req.url !== canonicalUrl) {
+      res.redirect(`${req.baseUrl}${canonicalUrl}`)
+      return
+    }
+
     next()
   }
 ]
