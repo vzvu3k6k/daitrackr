@@ -1,6 +1,8 @@
+let cacheManager = require('cache-manager')
 let express = require('express')
 let crypto = require('crypto')
 let pkginfo = require('./package.json')
+let responseCache = require('./lib/response_cache')
 let scrape = require('./lib/scrape')
 let util = require('./lib/util')
 
@@ -9,9 +11,24 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 app.set('port', process.env.PORT || 3000)
 
+let cacheStore
 if (app.get('env') === 'development') {
+  cacheStore = cacheManager.caching({
+    store: 'memory'
+  })
   app.locals.pretty = true
+} else {
+  cacheStore = cacheManager.caching({
+    store: require('cache-manager-redis'),
+    url: process.env.REDIS_URL
+  })
 }
+
+let cache = responseCache.bind(
+  null,
+  cacheStore,
+  3600 // 1時間
+)
 
 let credentials = {
   id: process.env.HATENA_ID,
@@ -40,13 +57,12 @@ let feedMiddlewares = [
     }
 
     next()
-  }
+  },
+  cache((req) => req.query.antenna)
 ]
 
 app.get('/feed', feedMiddlewares, (req, res) => {
   let antennaID = req.antennaID
-  return res.send(req.antennaID)
-
   scrape(credentials, antennaID).then((antenna) => {
     for (let log of antenna.changelog) {
       let key = [log.timestamp, log.user, log.action, log.url].join()
