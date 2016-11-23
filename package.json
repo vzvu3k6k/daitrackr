@@ -1,0 +1,26 @@
+{
+  "name": "daitrackr",
+  "description": "Track changelog of antennas in https://daichkr.hatelabo.jp/ as RSS",
+  "version": "0.0.1",
+  "author": "vzvu3k6k <vzvu3k6k@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/vzvu3k6k/daitrackr/issues"
+  },
+  "homepage": "https://github.com/vzvu3k6k/daitrackr#readme",
+  "license": "CC0-1.0",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vzvu3k6k/daitrackr.git"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@vzvu3k6k/daichkr-client": "^0.1.2",
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6"
+  }
+}

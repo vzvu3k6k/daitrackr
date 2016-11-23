@@ -1,0 +1,13 @@
+doctype
+html
+  head
+    meta(charset='utf-8')
+    title 大トラッカー
+  body
+    h1 大トラッカー
+    p 大チェッカーのアンテナの更新履歴をフィードにします。
+    form(action='/feed')
+      label アンテナのURL（もしくはID）
+        input(name='antenna' placeholder='960640536987889038')
+      input(type='submit' value='大トラックする')
+    p ※誰でも編集可能なアンテナのみ対応しています。

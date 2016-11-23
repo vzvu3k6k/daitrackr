@@ -1,0 +1,24 @@
+doctype xml
+rss(version='2.0')
+  channel
+    title #{name}の更新履歴
+    link= url
+    description= description
+    lastbuilddate= buildDate.toUTCString()
+    generator= generator
+    each log in changelog
+      case log.action
+        when 'add'
+          - log.action = '追加'
+        when 'del'
+          - log.action = '削除'
+      item
+        title #{log.action}: #{log.url}
+        link= log.url
+        description
+          a(href=`http://profile.hatena.ne.jp/${log.user}/`) log.user
+          |さんが
+          a(href=log.url)= log.url
+          |を#{log.action}しました。
+        pubdate= log.timestamp.toUTCString()
+        guid= log.guid
