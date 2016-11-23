@@ -5,6 +5,7 @@ let crypto = require('crypto')
 let pkginfo = require('./package.json')
 let scrape = require('./lib/scrape')
 let util = require('./lib/util')
+let pug = require('pug')
 
 let app = express()
 app.set('views', './views')
@@ -63,6 +64,7 @@ app.get('/feed', feedMiddlewares, (req, res) => {
     }
     res.header('content-type', 'application/rss+xml')
     res.render('feed', Object.assign(antenna, {
+      '_pug': pug,
       url: `https://daichkr.hatelabo.jp/antenna/${antennaID}`,
       generator: `${pkginfo.name}/${pkginfo.version}`,
       buildDate: new Date()

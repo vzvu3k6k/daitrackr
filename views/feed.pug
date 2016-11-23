@@ -16,9 +16,6 @@ rss(version='2.0')
         title #{log.action}: #{log.url}
         link= log.url
         description
-          a(href=`http://profile.hatena.ne.jp/${log.user}/`) log.user
-          |さんが
-          a(href=log.url)= log.url
-          |を#{log.action}しました。
+          = _pug.renderFile('./views/_feed_description.pug', { log })
         pubdate= log.timestamp.toUTCString()
         guid= log.guid
