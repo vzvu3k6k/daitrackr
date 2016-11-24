@@ -1,8 +1,8 @@
-let cacheManager = require('cache-manager')
+let apicache = require('apicache')
 let express = require('express')
+let redis = require('redis')
 let crypto = require('crypto')
 let pkginfo = require('./package.json')
-let responseCache = require('./lib/response_cache')
 let scrape = require('./lib/scrape')
 let util = require('./lib/util')
 
@@ -11,24 +11,17 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 app.set('port', process.env.PORT || 3000)
 
-let cacheStore
+let cache
 if (app.get('env') === 'development') {
-  cacheStore = cacheManager.caching({
-    store: 'memory'
-  })
+  cache = apicache.middleware
   app.locals.pretty = true
 } else {
-  cacheStore = cacheManager.caching({
-    store: require('cache-manager-redis'),
-    url: process.env.REDIS_URL
-  })
+  cache = apicache
+    .options({
+      redisClient: redis.createClient(process.env.REDIS_URL)
+    })
+    .middleware
 }
-
-let cache = responseCache.bind(
-  null,
-  cacheStore,
-  3600 // 1時間
-)
 
 let credentials = {
   id: process.env.HATENA_ID,
@@ -58,7 +51,7 @@ let feedMiddlewares = [
 
     next()
   },
-  cache((req) => req.query.antenna)
+  cache('60 minutes')
 ]
 
 app.get('/feed', feedMiddlewares, (req, res) => {
