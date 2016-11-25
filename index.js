@@ -1,3 +1,4 @@
+let ClientHTTPError = require('@vzvu3k6k/daichkr-client').HTTPError
 let apicache = require('apicache')
 let express = require('express')
 let redis = require('redis')
@@ -70,8 +71,12 @@ app.get('/feed', feedMiddlewares, (req, res) => {
       buildDate: new Date()
     }))
   }).catch((err) => {
-    console.log(err)
+    if (err instanceof ClientHTTPError && err.statusCode === 404) {
+      res.sendStatus(404)
+      return
+    }
     res.sendStatus(500)
+    console.log(err)
   })
 })
 
