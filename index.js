@@ -31,7 +31,7 @@ let credentials = {
 }
 
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', { github: pkginfo.homepage })
 })
 
 let feedMiddlewares = [
