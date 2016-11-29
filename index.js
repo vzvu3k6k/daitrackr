@@ -35,17 +35,17 @@ app.get('/', (req, res) => {
 })
 
 let feedMiddlewares = [
-  function handleAntennaID (req, res, next) {
-    req.antennaID = util.extractAntennaID(req.query.antenna)
+  function handleAntennaId (req, res, next) {
+    req.antennaId = util.extractAntennaId(req.query.antenna)
 
     // validate
-    if (req.antennaID === null) {
+    if (req.antennaId === null) {
       res.status(400).send('アンテナのURLまたはIDが未対応の形式です。')
       return
     }
 
     // canonicalize
-    let canonicalUrl = `/feed?antenna=${req.antennaID}`
+    let canonicalUrl = `/feed?antenna=${req.antennaId}`
     if (req.url !== canonicalUrl) {
       res.redirect(`${req.baseUrl}${canonicalUrl}`)
       return
@@ -57,8 +57,8 @@ let feedMiddlewares = [
 ]
 
 app.get('/feed', feedMiddlewares, (req, res) => {
-  let antennaID = req.antennaID
-  scrape(credentials, antennaID).then((antenna) => {
+  let antennaId = req.antennaId
+  scrape(credentials, antennaId).then((antenna) => {
     for (let log of antenna.changelog) {
       let key = [log.timestamp, log.user, log.action, log.url].join()
       log.guid = crypto.createHash('md5').update(key).digest('base64')
@@ -66,7 +66,7 @@ app.get('/feed', feedMiddlewares, (req, res) => {
     res.header('content-type', 'application/rss+xml')
     res.render('feed', Object.assign(antenna, {
       '_pug': pug,
-      url: `https://daichkr.hatelabo.jp/antenna/${antennaID}`,
+      url: `https://daichkr.hatelabo.jp/antenna/${antennaId}`,
       generator: `${pkginfo.name}/${pkginfo.version}`,
       buildDate: new Date()
     }))

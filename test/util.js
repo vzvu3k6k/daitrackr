@@ -1,7 +1,7 @@
 let assert = require('assert')
 let util = require('../lib/util')
 
-describe('extractAntennaID', () => {
+describe('extractAntennaId', () => {
   let validTestCases = {
     'a series of integer': '123456789012345678',
     'an antenna permalink': 'https://daichkr.hatelabo.jp/antenna/123456789012345678',
@@ -11,7 +11,7 @@ describe('extractAntennaID', () => {
   }
   for (let [type, arg] of Object.entries(validTestCases)) {
     it(`should return an antenna ID when the argument is ${type}`, () => {
-      assert.strictEqual(util.extractAntennaID(arg), '123456789012345678')
+      assert.strictEqual(util.extractAntennaId(arg), '123456789012345678')
     })
   }
 
@@ -21,7 +21,7 @@ describe('extractAntennaID', () => {
       'foo'
     ]
     for (let arg of testCases) {
-      assert.strictEqual(util.extractAntennaID(arg), null)
+      assert.strictEqual(util.extractAntennaId(arg), null)
     }
   })
 })
