@@ -1,0 +1,23 @@
+{
+  "name": "daitrackr",
+  "description": "Track changelog of antennas in https://daichkr.hatelabo.jp/ as RSS",
+  "website": "https://daitrackr.herokuapp.com/",
+  "repository": "https://github.com/vzvu3k6k/daitrackr",
+  "success_url": "/",
+  "env": {
+    "HATENA_ID": {
+      "description": "A Hatena account ID"
+    },
+    "HATENA_PASSWORD": {
+      "description": "A Hatena account password"
+    }
+  },
+  "addons": [
+    "heroku-redis"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
