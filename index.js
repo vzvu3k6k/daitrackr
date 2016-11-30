@@ -1,12 +1,12 @@
 let ClientHTTPError = require('@vzvu3k6k/daichkr-client').HTTPError
 let apicache = require('apicache')
-let express = require('express')
-let redis = require('redis')
 let crypto = require('crypto')
+let express = require('express')
+let pug = require('pug')
+let redis = require('redis')
 let pkginfo = require('./package.json')
 let scrape = require('./lib/scrape')
 let util = require('./lib/util')
-let pug = require('pug')
 
 let app = express()
 app.set('views', './views')
