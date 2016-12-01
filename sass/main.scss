@@ -1,0 +1,86 @@
+body {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+header {
+  flex-basis: 10rem;
+  position: relative;
+  height: 100vh;
+  margin: 0;
+  background-color: hsl(39, 10%, 15%);
+  color: hsl(39, 50%, 50%);
+  text-align: center;
+
+  h1 {
+    display: inline;
+    margin: 0;
+    padding: 1rem 0.2rem;
+    font-size: 1rem;
+    letter-spacing: 0.77rem;
+    writing-mode: vertical-rl;
+
+    img {
+      width: 7rem;
+      height: @width;
+    }
+  }
+
+  nav {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    height: 3rem;
+
+    a {
+      color: hsl(39, 50%, 90%);
+      font-size: 2rem;
+
+      &:hover {
+        color: hsl(39, 50%, 95%);
+      }
+    }
+  }
+}
+
+main {
+  padding-left: 1em;
+
+  a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+button,
+input {
+  appearance: none;
+}
+
+input[placeholder] {
+  border: thin solid hsl(39, 10%, 80%);
+  text-indent: 0.5rem;
+  height: 2rem;
+  min-width: 30rem;
+}
+
+button[type="submit"] {
+  border: none;
+  cursor: pointer;
+  height: 4rem;
+  line-height: @height;
+  color: #fff;
+  font-size: 1.3rem;
+  background-color: hsl(39, 90%, 55%);
+  transition: background-color 0.3s;
+  margin: 1rem 0;
+  padding: 0 1rem;
+
+  &:hover {
+    background-color: hsl(39, 90%, 50%);
+  }
+}
