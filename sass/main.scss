@@ -61,7 +61,8 @@ input {
 }
 
 input[placeholder] {
-  min-width: 30rem;
+  width: 90%;
+  max-width: 30rem;
   height: 2rem;
   text-indent: 0.5rem;
   border: thin solid hsl(39, 10%, 80%);
