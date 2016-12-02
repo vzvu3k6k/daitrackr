@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "postcss --config .postcssrc.json",
-    "lint": "eslint *.js lib test",
+    "lint": "eslint *.js lib test && stylelint sass/*",
     "start": "node index.js",
     "test": "mocha",
     "watch": "npm run build -- --watch"
@@ -37,6 +37,8 @@
     "mocha": "^3.1.2",
     "postcss-cli": "^2.6.0",
     "postcss-scss": "^0.4.0",
-    "precss": "^1.4.0"
+    "precss": "^1.4.0",
+    "stylelint": "^7.6.0",
+    "stylelint-config-qiita": "^1.0.0"
   }
 }
