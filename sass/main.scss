@@ -21,9 +21,13 @@ header {
     letter-spacing: 0.77rem;
     writing-mode: vertical-rl;
 
-    img {
+    &::before {
+      display: inline-block;
       width: 7rem;
       height: @width;
+      content: '';
+      background: url('/img/logo.svg') center center no-repeat;
+      background-size: contain;
     }
   }
 
