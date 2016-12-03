@@ -1,12 +1,13 @@
 body {
   display: flex;
   flex-direction: row;
+  flex: 1 0 auto;
   margin: 0;
 }
 
 header {
   position: relative;
-  flex-basis: 10rem;
+  flex: 0 0 10rem;
   height: 100vh;
   margin: 0;
   color: hsl(39, 50%, 50%);
@@ -46,6 +47,7 @@ header {
 }
 
 main {
+  flex: 1;
   padding-left: 1em;
 
   a {
