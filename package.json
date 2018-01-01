@@ -24,22 +24,24 @@
   },
   "dependencies": {
     "@vzvu3k6k/daichkr-client": "^0.1.4",
-    "apicache": "^0.7.1",
-    "autoprefixer": "^6.5.3",
+    "apicache": "^1.2.0",
+    "autoprefixer": "^7.2.3",
     "express": "^4.14.0",
-    "postcss-cli": "^2.6.0",
-    "postcss-scss": "^0.4.0",
-    "precss": "^1.4.0",
+    "postcss-cli": "^4.1.1",
+    "postcss-scss": "^1.0.2",
+    "precss": "^2.0.0",
     "pug": "^2.0.0-beta6",
     "redis": "^2.6.3"
   },
   "devDependencies": {
-    "eslint": "^3.10.2",
-    "eslint-config-standard": "^6.2.1",
+    "eslint": "^4.14.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "mocha": "^3.1.2",
-    "stylelint": "^7.6.0",
-    "stylelint-config-qiita": "^1.0.0"
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.1.0",
+    "stylelint": "^8.4.0",
+    "stylelint-config-qiita": "^2.1.0"
   }
 }
