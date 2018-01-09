@@ -1,9 +1,7 @@
 {
   "parser": "postcss-scss",
-  "use": [
-    "precss",
-    "autoprefixer"
-  ],
-  "input": "./sass/main.scss",
-  "output": "./public/css/main.css"
+  "plugins": {
+    "precss": {},
+    "autoprefixer": {}
+  }
 }

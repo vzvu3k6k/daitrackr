@@ -16,7 +16,7 @@
   },
   "scripts": {
     "postinstall": "npm run build",
-    "build": "postcss --config .postcssrc.json",
+    "build": "postcss sass/main.scss -o public/css/main.css",
     "lint": "eslint *.js lib test && stylelint sass/*",
     "start": "node index.js",
     "test": "mocha",
