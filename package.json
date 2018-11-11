@@ -18,6 +18,7 @@
     "build": "postcss sass/main.scss -o public/css/main.css",
     "lint": "eslint *.js lib test && stylelint sass/*",
     "start": "node index.js",
+    "start-dev": "npm start & npm run watch",
     "test": "mocha",
     "watch": "npm run build -- --watch"
   },
