@@ -15,7 +15,6 @@
     "url": "git+https://github.com/vzvu3k6k/daitrackr.git"
   },
   "scripts": {
-    "postinstall": "npm run build",
     "build": "postcss sass/main.scss -o public/css/main.css",
     "lint": "eslint *.js lib test && stylelint sass/*",
     "start": "node index.js",
