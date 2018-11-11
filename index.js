@@ -14,6 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', './views')
 app.set('view engine', 'pug')
 app.set('port', process.env.PORT || 3000)
+app.set('host', process.env.HOST || '127.0.0.1')
 
 let cache
 if (app.get('env') === 'development') {
@@ -82,6 +83,6 @@ app.get('/feed', feedMiddlewares, (req, res) => {
   })
 })
 
-app.listen(app.get('port'), () => {
-  console.log(`Listening on port ${app.get('port')}`)
+app.listen(app.get('port'), app.get('host'), () => {
+  console.log(`Listening on ${app.get('host')}:${app.get('port')}`)
 })
