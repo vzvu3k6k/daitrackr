@@ -1,5 +1,5 @@
 # Build assets
-FROM node:8 AS builder
+FROM node:10 AS builder
 WORKDIR /usr/src/app
 RUN npm install
 

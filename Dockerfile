@@ -1,11 +1,11 @@
 # Build assets
-FROM node:8 AS builder
+FROM node:10 AS builder
 WORKDIR /usr/src/app
 COPY . ./
 RUN npm install && npm run build
 
 # Start service
-FROM node:8
+FROM node:10
 ENV NODE_ENV=production
 ENV HOST=${HOST:-0.0.0.0}
 WORKDIR /usr/src/app
