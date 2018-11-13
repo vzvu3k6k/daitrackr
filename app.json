@@ -15,10 +15,5 @@
   "addons": [
     "heroku-redis"
   ],
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ],
   "stack": "container"
 }
