@@ -23,7 +23,7 @@
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
-    "@vzvu3k6k/daichkr-client": "^0.1.4",
+    "@vzvu3k6k/daichkr-client": "^0.1.5",
     "apicache": "^1.2.3",
     "autoprefixer": "^9.1.5",
     "express": "^4.16.3",
